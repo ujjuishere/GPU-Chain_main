@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Jetbrains Mono Font Import */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Custom Cursor Styles */
+body {
+  cursor: none;
+  overflow-x: hidden;
+}
+
+html, body {
+  position: relative;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #76B900;
+  border-radius: 50%;
+  position: fixed;
+  transition: top 0.05s ease-out, left 0.05s ease-out;
+  pointer-events: none;
+  z-index: 99999;
+  box-sizing: border-box;
+}
+
+.cursor::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border: 8px solid rgba(118, 185, 0, 0.3);
+  border-radius: 50%;
+  top: -8px;
+  left: -8px;
+  box-sizing: border-box;
+  animation: cursorPulse 0.5s infinite alternate;
+}
+
+.cursor::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  background: #76B900;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cursorPulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.7);
+  }
+}
+
+@keyframes cursorAnim3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.cursor.expand {
+  animation: cursorAnim3 0.5s forwards;
+  border: 2px solid #76B900;
+  box-shadow: 0 0 10px rgba(118, 185, 0, 0.6);
+}
